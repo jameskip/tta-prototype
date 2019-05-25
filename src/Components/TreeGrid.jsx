@@ -5,22 +5,25 @@ export default class TreeGrid extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      trees: {}
+      trees: []
     }
   }
   componentDidMount () {
-    fetch(`http://localhost:3000/Trees?filter[limit]=100`)
-      .then(function (response) {
+    fetch(`http://localhost:3000/Trees?filter[order][0]=timeUpdated%20desc&filter[limit][1]=100`)
+      .then((response) => {
         return response.json()
       })
-      .then(function (myJson) {
-        console.log({ myJson })
+      .then((myJson) => {
+        this.setState({ trees: myJson })
       })
   }
 
   render () {
     return (
-      <MediaCard />
+      <div style={{ marginLeft: 45, marginTop: 30 }}>
+        <MediaCard style={{ alignContent: 'center' }} trees={this.state.trees}/>
+      </div>
     )
   }
 }
+

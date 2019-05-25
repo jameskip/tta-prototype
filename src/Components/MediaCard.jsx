@@ -1,5 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
@@ -18,36 +19,49 @@ const useStyles = makeStyles({
   }
 })
 
-function MediaCard () {
+const MediaCard = (props) => {
+  const propTrees = props.trees
   const classes = useStyles()
 
+  console.log({ propTrees })
+
+  const renderedCards = Object.values(propTrees).map((curr) => {
+    return (
+      <React.Fragment key={curr.id}>
+
+        <Card className={classes.card}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={curr.imageUrl}
+              title="Tree"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+              #{curr.id}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
+              across all continents except Antarctica
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions>
+            <Button size="small" color="secondary">
+            Reject
+            </Button>
+            <Button size="small" color="primary">
+            Approve
+            </Button>
+          </CardActions>
+        </Card>
+      </React.Fragment>
+    )
+  })
   return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://media.istockphoto.com/photos/tree-picture-id543052538?k=6&m=543052538&s=612x612&w=0&h=YP7fBhjDe1dQGpj00Bu4ywsCjTljdW7dB_HKjp7_DDU="
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            #5657
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="secondary">
-          Reject
-        </Button>
-        <Button size="small" color="primary">
-          Approve
-        </Button>
-      </CardActions>
-    </Card>
+    <Grid container spacing={5}>
+      {renderedCards}
+    </Grid>
   )
 }
 
