@@ -1,14 +1,20 @@
 import React from 'react'
-import logo from './logo.svg'
+import CssBaseline from '@material-ui/core/CssBaseline'
+
 import './App.css'
-import Dashboard from './Components/Dashboard'
+import MenuAppBar from './Components/MenuAppBar'
+import TreeGrid from './Components/TreeGrid'
 
 function App () {
   return (
     <div className="App">
-      <header className="App-header">
-        <Dashboard />
-      </header>
+      <React.Fragment>
+        <CssBaseline />
+
+        <MenuAppBar />
+        <TreeGrid />
+
+      </React.Fragment>
     </div>
   )
 }
