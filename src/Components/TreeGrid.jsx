@@ -1,10 +1,10 @@
-import React, { Component, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import MediaCard from './MediaCard'
 
 const ApprovalGrid = () => {
-  const [trees, setTrees] = React.useState([])
-  const [loaded, setLoaded] = React.useState(false)
+  const [trees, setTrees] = useState([])
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     fetch(`http://localhost:3000/Trees?filter[order][0]=timeUpdated%20desc&filter[limit][1]=100&filter[skip]=5000`)
