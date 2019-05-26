@@ -11,6 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import ImageSearch from '@material-ui/icons/ImageSearch'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,6 +45,14 @@ const MenuAppBar = () => {
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
+          <IconButton
+            aria-owns={open ? 'menu-appbar' : undefined}
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <ImageSearch />
+          </IconButton>
           <Typography variant="h6" className={classes.title}>
             TreeTracker Admin
           </Typography>
@@ -55,7 +64,7 @@ const MenuAppBar = () => {
           </FormGroup>
           {auth && (
             <div>
-              
+
               <IconButton
                 aria-owns={open ? 'menu-appbar' : undefined}
                 aria-haspopup="true"

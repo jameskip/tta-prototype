@@ -50,7 +50,7 @@ const MapsModal = (props) => {
   return (
     <div>
       <Button onClick={handleOpen}>Open Map</Button>
-      
+
       <Modal
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"

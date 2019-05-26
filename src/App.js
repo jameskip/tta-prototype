@@ -1,6 +1,8 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import Routes from './routes.js'
 
 import './App.css'
 import MenuAppBar from './Components/MenuAppBar'
@@ -24,8 +26,7 @@ const App = () => {
         <CssBaseline />
 
         <MuiThemeProvider theme={theme}>
-          <MenuAppBar />
-          <TreeGrid />
+          <Routes />
         </MuiThemeProvider>
 
       </React.Fragment>
