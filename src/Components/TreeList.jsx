@@ -25,9 +25,10 @@ function TreeList () {
   })
 
   return (
-    <div style={{ maxWidth: '100%' }}>
+    <div style={{ maxWidth: '100%', minWidth: '80%', display: 'inline-block' }}>
       <MaterialTable
-        title="Editable Example"
+        title="Active Trees"
+        options={{ selection: true }}
         columns={state.columns}
         data={state.data}
         editable={{
