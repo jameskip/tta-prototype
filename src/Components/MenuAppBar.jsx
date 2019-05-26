@@ -15,6 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import ImageSearch from '@material-ui/icons/ImageSearch'
 import NaturePeople from '@material-ui/icons/NaturePeople'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,35 +49,42 @@ const MenuAppBar = () => {
 
       <AppBar position="static" color='primary'>
         <Toolbar>
-
+        <NavLink className={classes.menuIcon} to="/">
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
+          </NavLink>
 
-          <IconButton
-            className={classes.menuIcon}
-            aria-owns={open ? 'menu-appbar' : undefined}
-            aria-haspopup="true"
-            onClick={() => {}}
-            color="inherit"
-          >
-            <NavLink className={classes.menuIcon} to="/approve">
-              <ImageSearch />
-            </NavLink>
-          </IconButton>
+          <Tooltip title="Approve">
+            <IconButton
+              className={classes.menuIcon}
+              aria-owns={open ? 'menu-appbar' : undefined}
+              aria-haspopup="true"
+              onClick={() => {}}
+              color="inherit"
+            >
 
-          <IconButton
-            aria-owns={open ? 'menu-appbar' : undefined}
-            aria-haspopup="true"
-            onClick={() => {}}
-            color="inherit"
-          >
-            <NavLink className={classes.menuIcon} to="/trees">
+              <NavLink className={classes.menuIcon} to="/approve">
+                <ImageSearch />
+              </NavLink>
+            </IconButton>
+          </Tooltip>
 
-              <NaturePeople />
+          <Tooltip title="Trees">
 
-            </NavLink>
-          </IconButton>
+            <IconButton
+              aria-owns={open ? 'menu-appbar' : undefined}
+              aria-haspopup="true"
+              onClick={() => {}}
+              color="inherit"
+            >
+              <NavLink className={classes.menuIcon} to="/trees">
+
+                <NaturePeople />
+
+              </NavLink>
+            </IconButton>
+          </Tooltip>
 
           <Typography variant="h6" className={classes.title}>
             TreeTracker Admin

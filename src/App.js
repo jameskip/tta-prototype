@@ -1,7 +1,6 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import Routes from './routes.js'
 
 import './App.css'
