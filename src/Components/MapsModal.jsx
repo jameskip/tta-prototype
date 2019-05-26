@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { makeStyles } from '@material-ui/core/styles'
 import Modal from '@material-ui/core/Modal'
 import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const rand = () => {
   return Math.round(Math.random() * 20) - 10
@@ -29,27 +31,31 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const renderModal = (location) => {
-  return (
-    <iframe width="600" height="450" frameBorder="0" style={{ 'border': '0' }} src={`https://www.google.com/maps/embed/v1/place?q=${location}&key=AIzaSyDAh9dEXF_kYIqYav1ZFboMtXfRvlQtONo`} allowFullScreen>
-    </iframe>
-  )
-}
-
 const MapsModal = (props) => {
   const [open, setOpen] = React.useState(false)
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle)
+  const [loaded, setLoaded] = React.useState(false)
 
+  const handleRender = () => setLoaded(true)
   const handleOpen = () => setOpen(true)
-
-  const handleClose = () => setOpen(false)
-
+  const handleClose = () => {
+    setOpen(false)
+    setLoaded(false)
+  }
   const classes = useStyles()
 
+  const renderModal = (location) => {
+    return (
+      <iframe width="600" height="450" frameBorder="0" onLoad={handleRender} style={{ 'border': '0' }} src={`https://www.google.com/maps/embed/v1/place?q=${location}&key=AIzaSyDAh9dEXF_kYIqYav1ZFboMtXfRvlQtONo`} allowFullScreen>
+      </iframe>
+    )
+  }
+
   return (
+
     <div>
-      <Button onClick={handleOpen}>Open Map</Button>
+      <Button onClick={handleOpen}>Map</Button>
 
       <Modal
         aria-labelledby="simple-modal-title"

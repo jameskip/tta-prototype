@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
@@ -53,12 +54,10 @@ const MediaCard = (props) => {
                 📍{`Lat: ${Number.parseFloat(curr.lat).toFixed(2)}, Lon: ${Number.parseFloat(curr.lon).toFixed(2)}`}
               </Typography>
 
-              <MapsModal location={`${curr.lat},${curr.lon}`} />
-
               <Typography variant="overline" component="p">
                 {moment(curr.timeUpdated).fromNow()}
               </Typography>
-              
+
             </CardContent>
           </CardActionArea>
 
@@ -69,6 +68,7 @@ const MediaCard = (props) => {
             <Button size="small" color="primary">
             Approve
             </Button>
+            <MapsModal location={`${curr.lat},${curr.lon}`} />
           </CardActions>
 
         </Card>

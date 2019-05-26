@@ -1,21 +1,22 @@
 import React from 'react'
-import { Route, Switch, BrowserRouter } from 'react-router-dom'
+import { Route, BrowserRouter } from 'react-router-dom'
 import MenuAppBar from './Components/MenuAppBar'
+import ApprovalGrid from './Components/ApprovalGrid'
 import TreeGrid from './Components/TreeGrid'
 
 const HomeRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     <>
       <MenuAppBar {...props}/>
-      <TreeGrid {...props}/>
+      <ApprovalGrid {...props}/>
     </>
   )}/>
 )
 
 export default props => (
   <BrowserRouter>
-    <Switch>
-      <Route path='/' component={HomeRoute} />
-    </Switch>
+    <Route path='/' component={MenuAppBar} />
+    <Route path='/approve' component={ApprovalGrid} />
+    <Route path='/trees' component={TreeGrid} />
   </BrowserRouter>
 )

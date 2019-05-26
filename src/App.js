@@ -6,7 +6,7 @@ import Routes from './routes.js'
 
 import './App.css'
 import MenuAppBar from './Components/MenuAppBar'
-import TreeGrid from './Components/TreeGrid'
+import ApprovalGrid from './Components/ApprovalGrid'
 
 const theme = createMuiTheme({
   palette: {

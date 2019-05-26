@@ -1,4 +1,6 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -12,6 +14,7 @@ import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
 import ImageSearch from '@material-ui/icons/ImageSearch'
+import NaturePeople from '@material-ui/icons/NaturePeople'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,6 +25,9 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
+  },
+  menuIcon: {
+    color: '#ffffff'
   }
 }))
 
@@ -42,26 +48,47 @@ const MenuAppBar = () => {
 
       <AppBar position="static" color='primary'>
         <Toolbar>
+
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
+
+          <IconButton
+            className={classes.menuIcon}
+            aria-owns={open ? 'menu-appbar' : undefined}
+            aria-haspopup="true"
+            onClick={() => {}}
+            color="inherit"
+          >
+            <NavLink className={classes.menuIcon} to="/approve">
+              <ImageSearch />
+            </NavLink>
+          </IconButton>
+
           <IconButton
             aria-owns={open ? 'menu-appbar' : undefined}
             aria-haspopup="true"
-            onClick={handleMenu}
+            onClick={() => {}}
             color="inherit"
           >
-            <ImageSearch />
+            <NavLink className={classes.menuIcon} to="/trees">
+
+              <NaturePeople />
+
+            </NavLink>
           </IconButton>
+
           <Typography variant="h6" className={classes.title}>
             TreeTracker Admin
           </Typography>
+
           <FormGroup>
             <FormControlLabel
               control={<Switch checked={auth} onChange={handleChange} aria-label="LoginSwitch" />}
               label={auth ? 'Logout' : 'Login'}
             />
           </FormGroup>
+
           {auth && (
             <div>
 
@@ -94,6 +121,7 @@ const MenuAppBar = () => {
 
             </div>
           )}
+
         </Toolbar>
       </AppBar>
     </div>
