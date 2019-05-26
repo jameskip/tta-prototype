@@ -11,10 +11,11 @@ const ApprovalGrid = () => {
       .then((response) => {
         return response.json()
       })
-      .then((myJson) => {
+      .then(myJson => {
         setTrees(myJson)
         setLoaded(true)
       })
+      .catch(err => console.error(err))
   })
 
   if (!loaded) {
