@@ -18,6 +18,9 @@ export default class ApprovalGrid extends Component {
       .then((myJson) => {
         this.setState({ trees: myJson, loaded: true })
       })
+      .catch((err) => {
+        console.log({ err })
+      })
   }
 
   render () {

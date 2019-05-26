@@ -7,16 +7,8 @@ function TreeList () {
       { title: 'ID', field: 'id', type: 'numeric' },
       { title: 'Birthday', field: 'birthDay' },
       { title: 'Location', field: 'location' },
-      {
-        title: 'Alive',
-        field: 'alive',
-        lookup: { 0: 'Alive', 1: 'Dead' }
-      },
-      {
-        title: 'Missing',
-        field: 'missing',
-        lookup: { 0: '', 1: 'Missing' }
-      }
+      { title: 'Alive', field: 'alive', lookup: { 0: 'Alive', 1: 'Dead' } },
+      { title: 'Missing', field: 'missing', lookup: { 0: '', 1: 'Missing' } }
     ],
     data: [
       { id: 211, birthDay: '12/12/1990', location: '13.22, -144.99', alive: 0, missing: 1 },
@@ -28,7 +20,6 @@ function TreeList () {
     <div style={{ maxWidth: '100%', minWidth: '80%', display: 'inline-block' }}>
       <MaterialTable
         title="Active Trees"
-        options={{ selection: true }}
         columns={state.columns}
         data={state.data}
         editable={{
