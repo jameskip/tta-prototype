@@ -11,7 +11,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
-import teal from '@material-ui/core/colors/red'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,23 +24,17 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function MenuAppBar () {
+const MenuAppBar = () => {
   const classes = useStyles()
   const [auth, setAuth] = React.useState(true)
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
 
-  function handleChange (event) {
-    setAuth(event.target.checked)
-  }
+  const handleChange = (event) => setAuth(event.target.checked)
 
-  function handleMenu (event) {
-    setAnchorEl(event.currentTarget)
-  }
+  const handleMenu = (event) => setAnchorEl(event.currentTarget)
 
-  function handleClose () {
-    setAnchorEl(null)
-  }
+  const handleClose = () => setAnchorEl(null)
 
   return (
     <div className={classes.root}>
@@ -62,6 +55,7 @@ function MenuAppBar () {
           </FormGroup>
           {auth && (
             <div>
+              
               <IconButton
                 aria-owns={open ? 'menu-appbar' : undefined}
                 aria-haspopup="true"
@@ -70,6 +64,7 @@ function MenuAppBar () {
               >
                 <AccountCircle />
               </IconButton>
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -87,6 +82,7 @@ function MenuAppBar () {
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
               </Menu>
+
             </div>
           )}
         </Toolbar>

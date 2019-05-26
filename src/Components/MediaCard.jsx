@@ -3,7 +3,6 @@ import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
-import Modal from '@material-ui/core/Modal'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
@@ -28,12 +27,9 @@ const MediaCard = (props) => {
 
   console.log({ propTrees })
 
-  const isItMissing = (curr) => {
-    if (curr.missing) { return '⚠️' }
-  }
+  const isItMissing = curr => curr.missing ? '⚠️ Missing!' : null
 
   const renderedCards = Object.values(propTrees).map((curr) => {
-    const googleMapUrl = `https://maps.google.com/?q=${curr.lat},${curr.lon}`
     return (
       <React.Fragment key={curr.id}>
 
@@ -48,16 +44,21 @@ const MediaCard = (props) => {
 
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
-              #{curr.id}
+                #{curr.id}
               </Typography>
+
+              {isItMissing(curr)}
+
               <Typography variant="body2" color="textSecondary" component="p">
                 📍{`Lat: ${Number.parseFloat(curr.lat).toFixed(2)}, Lon: ${Number.parseFloat(curr.lon).toFixed(2)}`}
               </Typography>
 
               <MapsModal location={`${curr.lat},${curr.lon}`} />
+
               <Typography variant="overline" component="p">
                 {moment(curr.timeUpdated).fromNow()}
               </Typography>
+              
             </CardContent>
           </CardActionArea>
 

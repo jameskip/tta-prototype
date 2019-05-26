@@ -1,7 +1,6 @@
 import React from 'react'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
-import teal from '@material-ui/core/colors/teal'
 
 import './App.css'
 import MenuAppBar from './Components/MenuAppBar'
@@ -18,13 +17,13 @@ const theme = createMuiTheme({
   }
 })
 
-function App () {
+const App = () => {
   return (
     <div className="App">
       <React.Fragment>
         <CssBaseline />
-        <MuiThemeProvider theme={theme}>
 
+        <MuiThemeProvider theme={theme}>
           <MenuAppBar />
           <TreeGrid />
         </MuiThemeProvider>
