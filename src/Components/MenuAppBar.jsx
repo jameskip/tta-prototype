@@ -11,6 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import teal from '@material-ui/core/colors/red'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,13 +46,13 @@ function MenuAppBar () {
   return (
     <div className={classes.root}>
 
-      <AppBar position="static">
+      <AppBar position="static" color='primary'>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            TreeTracker Admin
           </Typography>
           <FormGroup>
             <FormControlLabel

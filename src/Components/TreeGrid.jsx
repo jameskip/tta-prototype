@@ -9,7 +9,7 @@ export default class TreeGrid extends Component {
     }
   }
   componentDidMount () {
-    fetch(`http://localhost:3000/Trees?filter[order][0]=timeUpdated%20desc&filter[limit][1]=100`)
+    fetch(`http://localhost:3000/Trees?filter[order][0]=timeUpdated%20desc&filter[limit][1]=100&filter[skip]=0`)
       .then((response) => {
         return response.json()
       })
@@ -26,4 +26,3 @@ export default class TreeGrid extends Component {
     )
   }
 }
-

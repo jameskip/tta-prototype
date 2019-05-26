@@ -1,17 +1,20 @@
 import React from 'react'
+import moment from 'moment'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
+import Modal from '@material-ui/core/Modal'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import MapsModal from './MapsModal'
 
 const useStyles = makeStyles({
   card: {
-    margin: 30,
+    margin: 20,
     maxWidth: 345
   },
   media: {
@@ -25,27 +28,39 @@ const MediaCard = (props) => {
 
   console.log({ propTrees })
 
+  const isItMissing = (curr) => {
+    if (curr.missing) { return '⚠️' }
+  }
+
   const renderedCards = Object.values(propTrees).map((curr) => {
+    const googleMapUrl = `https://maps.google.com/?q=${curr.lat},${curr.lon}`
     return (
       <React.Fragment key={curr.id}>
 
         <Card className={classes.card}>
+
           <CardActionArea>
             <CardMedia
               className={classes.media}
               image={curr.imageUrl}
               title="Tree"
             />
+
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">
               #{curr.id}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+                📍{`Lat: ${Number.parseFloat(curr.lat).toFixed(2)}, Lon: ${Number.parseFloat(curr.lon).toFixed(2)}`}
+              </Typography>
+
+              <MapsModal location={`${curr.lat},${curr.lon}`} />
+              <Typography variant="overline" component="p">
+                {moment(curr.timeUpdated).fromNow()}
               </Typography>
             </CardContent>
           </CardActionArea>
+
           <CardActions>
             <Button size="small" color="secondary">
             Reject
@@ -54,6 +69,7 @@ const MediaCard = (props) => {
             Approve
             </Button>
           </CardActions>
+
         </Card>
       </React.Fragment>
     )
