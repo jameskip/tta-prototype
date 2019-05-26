@@ -1,3 +1,9 @@
+<span>
+  <img width=400 src="./Screen Shot 2019-05-25 at 7.40.49 PM.png" />
+  <img width=400 src ="./Screen Shot 2019-05-25 at 7.41.42 PM.png" />
+</span>
+
+<br/>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
